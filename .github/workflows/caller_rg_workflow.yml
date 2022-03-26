@@ -1,0 +1,38 @@
+name: "01_Foundation"
+on:
+  workflow_dispatch:
+
+jobs:
+  Plan_Hub:
+    uses: "/rapidoxengine/.github/workflows/core_plan_workflow.yml"
+    with:
+      path: demo_flat_config                ## Path to terraform root module (Required)
+      tf_version: latest                 ## Terraform version e.g: 1.1.0 Default=latest (Optional)
+      az_resource_group: RG-HUB-TFSTATESTORAGE    ## AZ backend - AZURE Resource Group hosting terraform backend storage acc (Required)
+      az_storage_acc: rapidoxenginestatefiles    ## AZ backend - AZURE terraform backend storage acc (Required)
+      az_container_name: tfstates ## AZ backend - AZURE storage container hosting state files (Required)
+      tf_key: hub-deploy             ## AZ backend - Specifies name that will be given to terraform state file and plan artifact (Required)
+      tf_vars_file: values-hub.tfvars    ## Terraform TFVARS (Required)
+      enable_TFSEC: true                 ## (Optional)  Enable TFSEC IaC scans (Private repo requires GitHub enterprise)
+    secrets:
+      arm_client_id: ${{ secrets.ARM_CLIENT_ID }}             ## ARM Client ID 
+      arm_client_secret: ${{ secrets.ARM_CLIENT_SECRET }}     ## ARM Client Secret
+      arm_subscription_id: ${{ secrets.HUB_ARM_SUB_ID }} ## ARM Subscription ID
+      arm_tenant_id: ${{ secrets.ARM_TENANT_ID }}             ## ARM Tenant ID
+
+  Deploy_Hub:
+    needs: Plan_Hub
+    uses: Pwd9000-ML/Azure-Terraform-Deployments/.github/workflows/az_tf_apply.yml@master
+    with:
+      path: demo_flat_config                ## Path to terraform root module (Required)
+      tf_version: latest                 ## Terraform version e.g: 1.1.0 Default=latest (Optional)
+      az_resource_group: RG-HUB-TFSTATESTORAGE    ## AZ backend - AZURE Resource Group hosting terraform backend storage acc (Required)
+      az_storage_acc: rapidoxenginestatefiles    ## AZ backend - AZURE terraform backend storage acc (Required)
+      az_container_name: tfstates ## AZ backend - AZURE storage container hosting state files (Required)
+      tf_key: hub-deploy             ## AZ backend - Specifies name of the terraform state file and workflow artifact to download (Required)
+      gh_environment: HUB        ## GH Environment. Default=null - (Optional)
+    secrets:
+      arm_client_id: ${{ secrets.ARM_CLIENT_ID }}             ## ARM Client ID 
+      arm_client_secret: ${{ secrets.ARM_CLIENT_SECRET }}     ## ARM Client Secret
+      arm_subscription_id: ${{ secrets.HUB_ARM_SUB_ID }} ## ARM Subscription ID
+      arm_tenant_id: ${{ secrets.ARM_TENANT_ID }}             ## ARM Tenant ID
