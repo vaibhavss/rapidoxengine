@@ -4,7 +4,7 @@ on:
 
 jobs:
   Plan_Hub:
-    uses: "/rapidoxengine/.github/workflows/core_plan_workflow.yml"
+    uses: vaibhavss/rapidoxengine/.github/workflows/core_plan_workflow.yml@master
     with:
       path: demo_flat_config                ## Path to terraform root module (Required)
       tf_version: latest                 ## Terraform version e.g: 1.1.0 Default=latest (Optional)
