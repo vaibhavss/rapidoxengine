@@ -1,5 +1,5 @@
 resourceGroupLocation = "uksouth"
-resourceGroupName = "rg-hub-001"
+resourceGroupName     = "rg-hub-001"
 resourceGroupTags = {
   "environment" = "hub"
 }
