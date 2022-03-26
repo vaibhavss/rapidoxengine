@@ -4,7 +4,7 @@ on:
 
 jobs:
   Plan_Hub:
-    uses: vaibhavss/rapidoxengine/.github/workflows/core_plan_workflow.yml@master
+    uses: vaibhavss/rapidoxengine/.github/workflows/core_plan_workflow.yml@main
     with:
       path: demo_flat_config                ## Path to terraform root module (Required)
       tf_version: latest                 ## Terraform version e.g: 1.1.0 Default=latest (Optional)
@@ -22,7 +22,7 @@ jobs:
 
   Deploy_Hub:
     needs: Plan_Hub
-    uses: Pwd9000-ML/Azure-Terraform-Deployments/.github/workflows/az_tf_apply.yml@master
+    uses: vaibhavss/rapidoxengine/.github/workflows/core_plan_workflow.yml@main
     with:
       path: demo_flat_config                ## Path to terraform root module (Required)
       tf_version: latest                 ## Terraform version e.g: 1.1.0 Default=latest (Optional)
