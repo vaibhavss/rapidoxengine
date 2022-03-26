@@ -22,7 +22,7 @@ jobs:
 
   Deploy_Hub:
     needs: Plan_Hub
-    uses: vaibhavss/rapidoxengine/.github/workflows/core_plan_workflow.yml@main
+    uses: vaibhavss/rapidoxengine/.github/workflows/core_apply_workflow.yml@main
     with:
       path: demo_flat_config                ## Path to terraform root module (Required)
       tf_version: latest                 ## Terraform version e.g: 1.1.0 Default=latest (Optional)
