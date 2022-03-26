@@ -73,7 +73,7 @@ jobs:
       ###AZURE Client details###
       ARM_CLIENT_ID: ${{ secrets.arm_client_id }}
       ARM_CLIENT_SECRET: ${{ secrets.arm_client_secret }}
-      ARM_SUB_ID: ${{ secrets.arm_subscription_id }}
+      ARM_SUB_ID: ${{ secrets.arm_sub_id }}
       ARM_TENANT_ID: ${{ secrets.arm_tenant_id }}
   
     steps:
