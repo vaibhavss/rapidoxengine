@@ -1,4 +1,5 @@
 terraform {
+  required_version = "~> 1.1.0"
   backend "azurerm" {}
   required_providers {
     azurerm = {
@@ -6,6 +7,11 @@ terraform {
       version = "~> 3.0.1"
     }
   }
+}
+provider "azurerm" {
+  features {
+  }
+  skip_provider_registration = true
 }
 
 resource "azurerm_resource_group" "resource_group" {
