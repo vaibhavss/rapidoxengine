@@ -1,4 +1,4 @@
-name: "01_Foundation"
+name: "LandingZone"
 on:
   workflow_dispatch:
 
