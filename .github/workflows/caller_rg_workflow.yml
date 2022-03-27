@@ -55,7 +55,7 @@ jobs:
       arm_tenant_id: ${{ secrets.ARM_TENANT_ID }}             ## ARM Tenant ID
 
   Deploy_Dev:
-    needs: Plan_Hub
+    needs: Plan_Dev
     uses: vaibhavss/rapidoxengine/.github/workflows/core_apply_workflow.yml@main
     with:
       path: demo_flat_config                ## Path to terraform root module (Required)
