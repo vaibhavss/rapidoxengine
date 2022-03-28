@@ -1,7 +1,7 @@
 name: "LandingZone"
 # on:
 #   workflow_dispatch:
-on: [push, pull_request]
+on: pull_request
 
 jobs:
   Plan_Dev:
