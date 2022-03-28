@@ -59,6 +59,7 @@ on:
 jobs:
   build-plan:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
     environment: ${{ inputs.gh_environment }}
     defaults:
       run:

@@ -87,3 +87,5 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply plan.tfplan
+        if: github.event_name == 'pull_request'
+        
