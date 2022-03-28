@@ -20,6 +20,7 @@ jobs:
       arm_client_secret: ${{ secrets.ARM_CLIENT_SECRET }}     ## ARM Client Secret
       arm_subscription_id: ${{ secrets.DEV_ARM_SUB_ID }} ## ARM Subscription ID
       arm_tenant_id: ${{ secrets.ARM_TENANT_ID }}             ## ARM Tenant ID
+      if: github.event_name == 'push'
 
   Deploy_Dev:
     needs: Plan_Dev
@@ -37,6 +38,7 @@ jobs:
       arm_client_secret: ${{ secrets.ARM_CLIENT_SECRET }}     ## ARM Client Secret
       arm_subscription_id: ${{ secrets.DEV_ARM_SUB_ID }} ## ARM Subscription ID
       arm_tenant_id: ${{ secrets.ARM_TENANT_ID }}             ## ARM Tenant ID
+      if: github.event_name == 'pull_request'
 
   Plan_Hub:
     needs: [Plan_Dev, Deploy_Dev]
@@ -55,6 +57,7 @@ jobs:
       arm_client_secret: ${{ secrets.ARM_CLIENT_SECRET }}     ## ARM Client Secret
       arm_subscription_id: ${{ secrets.ARM_SUBSCRIPTION_ID }} ## ARM Subscription ID
       arm_tenant_id: ${{ secrets.ARM_TENANT_ID }}             ## ARM Tenant ID
+      if: github.event_name == 'push'
 
   Deploy_Hub:
     needs: Plan_Hub
@@ -72,6 +75,7 @@ jobs:
       arm_client_secret: ${{ secrets.ARM_CLIENT_SECRET }}     ## ARM Client Secret
       arm_subscription_id: ${{ secrets.ARM_SUBSCRIPTION_ID }} ## ARM Subscription ID
       arm_tenant_id: ${{ secrets.ARM_TENANT_ID }}             ## ARM Tenant ID
+      if: github.event_name == 'pull_request'
 
   Plan_Prd:
     needs: [Plan_Dev, Deploy_Dev, Plan_Hub, Deploy_Hub]
@@ -90,6 +94,7 @@ jobs:
       arm_client_secret: ${{ secrets.ARM_CLIENT_SECRET }}     ## ARM Client Secret
       arm_subscription_id: ${{ secrets.PRD_ARM_SUB_ID }} ## ARM Subscription ID
       arm_tenant_id: ${{ secrets.ARM_TENANT_ID }}             ## ARM Tenant ID
+      if: github.event_name == 'push'
 
   Deploy_Prd:
     needs: Plan_prd
@@ -107,3 +112,4 @@ jobs:
       arm_client_secret: ${{ secrets.ARM_CLIENT_SECRET }}     ## ARM Client Secret
       arm_subscription_id: ${{ secrets.PRD_ARM_SUB_ID }} ## ARM Subscription ID
       arm_tenant_id: ${{ secrets.ARM_TENANT_ID }}             ## ARM Tenant ID
+      if: github.event_name == 'pull_request'
