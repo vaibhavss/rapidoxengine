@@ -41,7 +41,7 @@ jobs:
       
 
   Plan_Hub:
-    needs: [Plan_Dev, Deploy_Dev]
+    needs: Plan_Dev
     uses: vaibhavss/rapidoxengine/.github/workflows/core_plan_workflow.yml@main
     with:
       path: demo_flat_config                ## Path to terraform root module (Required)
@@ -78,7 +78,7 @@ jobs:
       
 
   Plan_Prd:
-    needs: [Plan_Dev, Deploy_Dev, Plan_Hub, Deploy_Hub]
+    needs: Plan_Dev
     uses: vaibhavss/rapidoxengine/.github/workflows/core_plan_workflow.yml@main
     with:
       path: demo_flat_config                ## Path to terraform root module (Required)
