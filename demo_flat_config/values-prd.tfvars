@@ -2,5 +2,5 @@ resourceGroupLocation = "uksouth"
 resourceGroupName     = "rg-prd-001"
 resourceGroupTags = {
   "environment" = "prd"
-  "test"        = "val-prd4"
+  "test"        = "val-prd40"
 }
